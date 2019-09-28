@@ -13,7 +13,7 @@ vk._auth_token()
 
 while True:
     try:
-        messages = vk.method("messages.getConversations", {"offset": 0, "count": 20, "filter": "unanswered"})
+        messages = vk.method("messages.getConversations", {"offset": 0, "count": 1, "filter": "unanswered"})
         if messages["count"] >= 1:
             id = messages["items"][0]["last_message"]["from_id"]
             body = messages["items"][0]["last_message"]["text"]
