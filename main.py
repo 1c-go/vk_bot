@@ -15,16 +15,19 @@ while True:
     try:
         messages = vk.method("messages.getConversations", {"offset": 0, "count": 1, "filter": "unanswered"})
         if messages["count"] == 1:
-            id = messages["items"][0]["last_message"]["from_id"]
-            body = messages["items"][0]["last_message"]["text"].lower()
+            message = messages["items"][0]["last_message"]
+            id = message["from_id"]
+            body = message["text"].lower()
+
             if body == "привет":
-                response = "Привет! Я чат бот Банка Росси! Хочешь узнать как получить стикеры? Да или Нет"
+                response = "Привет! Я чат бот Банка Росси! Хочешь узнать, как получить стикеры?"
             elif body == "да":
-                response = "Чтобы получить стикеры скачай и пройди опрос в новоп приложении от сбербанка! Типа ссылка И введи код"
+                response = "Чтобы получить стикеры, скачай приложение \"Сообщество Банка Россия\" и пройди любой опрос! <ссылка на маркет и апстор>."
             elif body == "код":
                 response = "Получай стикеры"
             else:
-                response = "ЧАВООО???"
+                response = "Не понял"
+
             vk.method("messages.send", {"peer_id": id, "message": response, "random_id": random.randint(1, 2147483647)})
     except Exception as E:
         time.sleep(1)
