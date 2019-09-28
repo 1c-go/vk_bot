@@ -1,4 +1,5 @@
 FROM python:3.7-slim
-ADD main.py /
-RUN pip install vk_api
+COPY main.py /
+COPY requirements.txt /
+RUN pip install -r requirements.txt
 CMD [ "python", "main.py" ]
