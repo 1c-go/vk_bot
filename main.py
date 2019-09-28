@@ -19,10 +19,12 @@ while True:
             id = message["from_id"]
             body = message["text"].lower()
 
-            if body == "привет":
-                response = "Привет! Я чат бот Банка Росси! Хочешь узнать, как получить стикеры?"
-            elif body == "да":
+            if body == "привет" or body == "хай" or body == "Здорова" or body == "hi" or body == "hello" :
+                response = "Привет! Я чат бот Банка России! Хочешь узнать, как получить стикеры?"
+            elif body == "да" or body == "ага" or body == "yes":
                 response = "Чтобы получить стикеры, скачай приложение \"Сообщество Банка Россия\" и пройди любой опрос! <ссылка на маркет и апстор>."
+            elif body == "нет" or body == "неа" or body == "no" or body == "не" :
+                response = "Очень жаль... Но если ты передумаешь, то всегда можешь написать \"Да\" "
             elif body == "код":
                 response = "Получай стикеры"
             else:
